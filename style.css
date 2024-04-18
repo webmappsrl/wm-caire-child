@@ -2,7 +2,7 @@
 Theme Name: CAIRE Child
 Theme URI: https://webmapp.it/
 Template: Impreza
-Author: Webmapp
+Author: Webmapp, Rubens Garofalo.
 Author URI: https://webmapp.it/
 Description: Multi-Purpose WordPress Theme.
 Version: 8.23.2.1713365404
@@ -10,3 +10,12 @@ Updated: 2024-04-17 16:50:04
 
 */
 
+/*Header*/
+@media (min-width: 949px) {
+  .wm_header_logo {
+    margin-right: 12.4rem !important;
+  }
+  .wm_header_menu > .w-nav-list {
+    flex-wrap: wrap;
+  }
+}
