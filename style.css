@@ -81,6 +81,9 @@ Updated: 2024-04-17 16:50:04
   color: var(--color-header-middle-text-hover);
 }
 /* Single track & poi */
+.wm_body_section {
+  padding: 2% 7% 0% 7%;
+}
 .wm_layer_wrapper {
   padding: 2% 7%;
 }
@@ -102,7 +105,7 @@ Updated: 2024-04-17 16:50:04
 }
 .wm_iframe_map_track {
   width: 100%;
-  height: 600px;
+  height: 690px;
   border: 2px solid var(--color-header-top-text);
 }
 .wm_track_body_download {
@@ -148,7 +151,7 @@ Updated: 2024-04-17 16:50:04
   padding: 0px 0px 10px 10px;
 }
 .wm_body_gallery {
-  padding-bottom: 30px;
+  padding: 30px 0px;
 }
 .swiper-container {
   position: relative;
@@ -158,7 +161,7 @@ Updated: 2024-04-17 16:50:04
 }
 .swiper-button-prev,
 .swiper-button-next {
-  color: var(--color-header-middle-text-hover);
+  color: #f4a138;
   position: absolute;
   top: 50%;
   z-index: 10;
@@ -181,7 +184,7 @@ Updated: 2024-04-17 16:50:04
   text-align: center;
 }
 .swiper-pagination-bullet-active {
-  background: var(--color-header-middle-text-hover);
+  background: #f4a138;
 }
 .swiper-slide {
   text-align: center;
