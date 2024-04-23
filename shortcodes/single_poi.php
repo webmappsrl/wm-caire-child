@@ -48,7 +48,7 @@ function wm_single_poi_pnfc($atts)
 		$title = $poi_properties['name'][$language] ?? '';
 		$description = $poi_properties['description'][$language] ?? '';
 		$excerpt = $poi_properties['excerpt'][$language] ?? '';
-		$featured_image_url = $poi_properties['feature_image']['url'] ?? get_stylesheet_directory_uri() . '/assets/images/background.png';
+		$featured_image_url = $poi_properties['feature_image']['url'] ?? get_stylesheet_directory_uri() . '/assets/images/feature_image.jpg';
 		$featured_image = $poi_properties['feature_image']['sizes']['1440x500'] ?? $featured_image_url;
 		$contact_phone = $poi_properties['contact_phone'] ?? '';
 		$contact_email = $poi_properties['contact_email'] ?? '';

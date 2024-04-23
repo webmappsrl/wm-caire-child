@@ -53,7 +53,7 @@ function wm_grid_poi($atts)
                 <div class="wm_grid_poi_item">
                     <?php
                     $name = $poi['name'][$language] ?? '';
-                    $feature_image_url = $poi['featureImage']['thumbnail'] ?? get_stylesheet_directory_uri() . '/assets/images/background.png';
+                    $feature_image_url = $poi['featureImage']['thumbnail'] ?? get_stylesheet_directory_uri() . '/assets/images/grid_background.png';
                     $name_url = wm_custom_slugify($name);
                     $language_prefix = $language === 'en' ? '/en' : '';
                     $poi_page_url = "{$language_prefix}/poi/{$name_url}/";

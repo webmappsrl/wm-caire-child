@@ -54,7 +54,7 @@ function wm_grid_track($atts)
             <div class="wm_grid_track_item">
                 <?php
                 $name = $track['name'][$language] ?? '';
-                $feature_image_url = $track['featureImage']['thumbnail'] ?? '/assets/images/background.jpg';
+                $feature_image_url = $track['featureImage']['thumbnail'] ?? get_stylesheet_directory_uri() . '/assets/images/grid_background.png';
                 $name_url = wm_custom_slugify($name);
                 $language_prefix = $language === 'en' ? '/en' : '';
                 $track_page_url = "{$language_prefix}/track/{$name_url}/";

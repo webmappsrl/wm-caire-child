@@ -35,7 +35,7 @@ function wm_single_track_pnfc($atts)
 		$description = $track['description'][$language] ?? null;
 		$excerpt = $track['excerpt'][$language] ?? null;
 		$title = $track['name'][$language] ?? null;
-		$featured_image_url = $track['feature_image']['url'] ?? get_stylesheet_directory_uri() . '/assets/images/background.jpg';
+		$featured_image_url = $track['feature_image']['url'] ?? get_stylesheet_directory_uri() . '/assets/images/feature_image.jpg';
 		$featured_image = $track['feature_image']['sizes']['1440x500'] ?? $featured_image_url;
 		$gallery = $track['image_gallery'] ?? [];
 		$gpx = $track['gpx_url'] ?? null;
