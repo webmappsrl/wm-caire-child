@@ -81,9 +81,6 @@ Updated: 2024-04-17 16:50:04
   color: var(--color-header-middle-text-hover);
 }
 /* Single track & poi */
-.wm_body_section {
-  padding: 2% 7% 0% 7%;
-}
 .wm_layer_wrapper {
   padding: 2% 7%;
 }
