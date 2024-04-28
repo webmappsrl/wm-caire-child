@@ -9,7 +9,15 @@ Version: 8.23.2.1713365404
 Updated: 2024-04-17 16:50:04
 
 */
-
+/*Global*/
+#page-content {
+  margin-top: 150px;
+}
+@media (max-width: 767px) {
+  #page-content {
+    margin-top: 80px;
+  }
+}
 /*Header*/
 .wm_header_menu > .w-nav-list {
   font-weight: bold;
@@ -22,7 +30,6 @@ Updated: 2024-04-17 16:50:04
     flex-wrap: wrap;
   }
 }
-
 /*Home*/
 div.wm_covid_message > div > div > p > a {
   color: white;
@@ -85,6 +92,11 @@ div.wm_covid_message > div > div > p > a {
   color: var(--color-header-middle-text-hover);
 }
 /* Single track & poi */
+.wm_body_track_section,
+.wm_body_poi_section {
+  padding: 2% 7% 0% 7%;
+}
+
 .wm_layer_wrapper {
   padding: 2% 7%;
 }
@@ -201,7 +213,6 @@ div.wm_covid_message > div > div > p > a {
   height: 100%;
   object-fit: cover;
 }
-
 @media (min-width: 768px) {
   .wm_body_section {
     display: grid;

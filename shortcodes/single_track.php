@@ -50,7 +50,7 @@ function wm_single_track_pnfc($atts)
 		</div>
 	</section>
 
-	<div class="wm_body_section">
+	<div class="wm_body_track_section">
 		<div class="wm_body_map_wrapper">
 			<?php if ($title) { ?>
 				<h1 class="align_left wm_header_title">
