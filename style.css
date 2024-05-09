@@ -35,10 +35,6 @@ Updated: 2024-04-17 16:50:04
     flex-wrap: wrap;
   }
 }
-/*Home*/
-div.wm_covid_message > div > div > p > a {
-  color: white;
-}
 /* Grid track & poi */
 .wm_tracks_grid,
 .wm_poi_grid {
@@ -151,6 +147,7 @@ div.wm_covid_message > div > div > p > a {
   color: white;
 }
 .wm_body_description {
+  margin-top: 20px;
   font-size: 19px;
   font-style: normal;
   font-weight: 400;

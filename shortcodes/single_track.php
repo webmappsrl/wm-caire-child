@@ -1,9 +1,9 @@
 <?php
 if (!is_admin()) {
-	add_shortcode('wm_single_track', 'wm_single_track_pnfc');
+	add_shortcode('wm_single_track', 'wm_single_track');
 }
 
-function wm_single_track_pnfc($atts)
+function wm_single_track($atts)
 {
 	if (defined('ICL_LANGUAGE_CODE')) {
 		$language = ICL_LANGUAGE_CODE;
@@ -22,14 +22,16 @@ function wm_single_track_pnfc($atts)
 	// echo '<pre>';
 	// print_r($track);
 	// echo '</pre>';
-	$iframeUrl = "https://geohub.webmapp.it/w/simple/" . $track_id;
+	// $iframeUrl = "https://geohub.webmapp.it/w/simple/" . $track_id;
+	$iframeUrl = wp_is_mobile() ? "https://60.mobile.webmapp.it/map?track=" . $track_id : "https://60.app.geohub.webmapp.it/#/map?track=" . $track_id;
+
+
 
 	$description = null;
 	$excerpt = null;
 	$title = null;
 	$featured_image = null;
 	$gallery = [];
-	$gpx = null;
 
 	if ($track) {
 		$description = $track['description'][$language] ?? null;
@@ -38,7 +40,6 @@ function wm_single_track_pnfc($atts)
 		$featured_image_url = $track['feature_image']['url'] ?? get_stylesheet_directory_uri() . '/assets/images/feature_image.jpg';
 		$featured_image = $track['feature_image']['sizes']['1440x500'] ?? $featured_image_url;
 		$gallery = $track['image_gallery'] ?? [];
-		$gpx = $track['gpx_url'] ?? null;
 	}
 	ob_start();
 ?>
@@ -61,12 +62,6 @@ function wm_single_track_pnfc($atts)
 				<p class="wm_excerpt"><?php echo wp_kses_post($excerpt); ?></p>
 			<?php } ?>
 			<iframe class="wm_iframe_map_track" src="<?= esc_url($iframeUrl); ?>" loading="lazy"></iframe>
-			<div class="wm_track_body_download">
-				<a class="icon_atleft" href="<?= $gpx ?>">
-					<i class="fa fa-download"></i>
-					<?= __('Download GPX', 'wm-child') ?>
-				</a>
-			</div>
 
 			<?php if ($description) { ?>
 				<div class="wm_body_description">

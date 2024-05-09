@@ -1,9 +1,9 @@
 <?php
 if (!is_admin()) {
-    add_shortcode('wm_single_layer', 'wm_single_layer_pnfc');
+    add_shortcode('wm_single_layer', 'wm_single_layer');
 }
 
-function wm_single_layer_pnfc($atts)
+function wm_single_layer($atts)
 {
     if (defined('ICL_LANGUAGE_CODE')) {
         $language = ICL_LANGUAGE_CODE;

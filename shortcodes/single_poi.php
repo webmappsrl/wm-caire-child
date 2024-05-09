@@ -1,9 +1,9 @@
 <?php
 if (!is_admin()) {
-	add_shortcode('wm_single_poi', 'wm_single_poi_pnfc');
+	add_shortcode('wm_single_poi', 'wm_single_poi');
 }
 
-function wm_single_poi_pnfc($atts)
+function wm_single_poi($atts)
 {
 	if (defined('ICL_LANGUAGE_CODE')) {
 		$language = ICL_LANGUAGE_CODE;
