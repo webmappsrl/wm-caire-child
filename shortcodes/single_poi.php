@@ -30,19 +30,15 @@ function wm_single_poi($atts)
 	}
 
 	$poi_properties = $poi['properties'];
-	$iframeUrl = "https://geohub.webmapp.it/poi/simple/" . $poi_id;
+	// $iframeUrl = "https://geohub.webmapp.it/poi/simple/" . $poi_id;
+	$iframeUrl = wp_is_mobile() ? "https://60.mobile.webmapp.it/map?poi=" . $poi_id : "https://60.app.geohub.webmapp.it/#/map?poi=" . $poi_id;
+
 
 	$title = null;
 	$description = null;
 	$excerpt = null;
 	$featured_image = null;
-	$contact_phone = null;
-	$contact_email = null;
-	$addr_street = null;
-	$addr_postcode = null;
-	$addr_locality = null;
 	$gallery = null;
-	$related_urls = null;
 
 	if (!empty($poi_properties)) {
 		$title = $poi_properties['name'][$language] ?? '';
@@ -50,13 +46,7 @@ function wm_single_poi($atts)
 		$excerpt = $poi_properties['excerpt'][$language] ?? '';
 		$featured_image_url = $poi_properties['feature_image']['url'] ?? get_stylesheet_directory_uri() . '/assets/images/feature_image.jpg';
 		$featured_image = $poi_properties['feature_image']['sizes']['1440x500'] ?? $featured_image_url;
-		$contact_phone = $poi_properties['contact_phone'] ?? '';
-		$contact_email = $poi_properties['contact_email'] ?? '';
-		$addr_street = $poi_properties['addr_street'] ?? '';
-		$addr_postcode = $poi_properties['addr_postcode'] ?? '';
-		$addr_locality = $poi_properties['addr_locality'] ?? '';
 		$gallery = $poi_properties['image_gallery'] ?? [];
-		$related_urls = $poi_properties['related_url'] ?? [];
 	}
 	ob_start();
 ?>
@@ -77,30 +67,7 @@ function wm_single_poi($atts)
 			<?php if ($excerpt) { ?>
 				<p class="wm_excerpt"><?php echo wp_kses_post($excerpt); ?></p>
 			<?php } ?>
-			<iframe class="wm_iframe_map_poi" src="<?= esc_url($iframeUrl); ?>" loading="lazy"></iframe>
-			<div class="wm_info">
-				<?php
-				$info_parts = [];
-				if (!empty($addr_street) || !empty($addr_postcode) || !empty($addr_locality)) {
-					$address = trim($addr_street . ', ' . $addr_postcode . ' ' . $addr_locality, ', ');
-					$info_parts[] = '<span class="wm_address_info"><span class="fa fa-map-marker-alt"></span> ' . esc_html($address) . '</span>';
-				}
-				if (!empty($contact_phone)) {
-					$info_parts[] = '<span class="wm_contact_phone"><span class="fa fa-phone"></span> ' . esc_html($contact_phone) . '</span>';
-				}
-				if (!empty($contact_email)) {
-					$info_parts[] = '<span class="wm_contact_email"><span class="fa fa-envelope"></span> <a href="mailto:' . esc_attr($contact_email) . '">' . esc_html($contact_email) . '</a></span>';
-				}
-				if (!empty($related_urls)) {
-					$urls_output = [];
-					foreach ($related_urls as $url_name => $url) {
-						$urls_output[] = '<a href="' . esc_url($url) . '" target="_blank">' . esc_html($url_name) . '</a>';
-					}
-					$info_parts[] = '<span class="wm_related_urls"> <span class="fa fa-external-link-alt"></span> ' . implode(', ', $urls_output) . '</span>';
-				}
-				echo implode(' - ', $info_parts);
-				?>
-			</div>
+			<iframe class="wm_iframe_map" src="<?= esc_url($iframeUrl); ?>" loading="lazy"></iframe>
 		</div>
 
 		<?php if ($description) { ?>
