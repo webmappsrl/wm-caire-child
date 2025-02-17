@@ -93,6 +93,13 @@ Updated: 2024-04-17 16:50:04
   color: var(--color-header-middle-text-hover);
 }
 /* Single track & poi */
+.wm_iframe_mobile {
+  display: none;
+}
+
+.wm_iframe_desktop {
+  display: block;
+}
 .wm_body_track_section,
 .wm_body_poi_section {
   padding: 2% 7% 0% 7%;
@@ -254,6 +261,14 @@ Updated: 2024-04-17 16:50:04
     width: 100%;
     margin: auto;
     grid-template-columns: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .wm_iframe_mobile {
+    display: block;
+  }
+  .wm_iframe_desktop {
+    display: none;
   }
 }
 /* Contact form */

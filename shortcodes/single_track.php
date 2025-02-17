@@ -23,8 +23,6 @@ function wm_single_track($atts)
 	// print_r($track);
 	// echo '</pre>';
 	// $iframeUrl = "https://geohub.webmapp.it/w/simple/" . $track_id;
-	$iframeUrl = wp_is_mobile() ? "https://60.mobile.webmapp.it/map?track=" . $track_id : "https://60.app.geohub.webmapp.it/#/map?track=" . $track_id;
-
 
 
 	$description = null;
@@ -61,7 +59,11 @@ function wm_single_track($atts)
 			<?php if ($excerpt) { ?>
 				<p class="wm_excerpt"><?php echo wp_kses_post($excerpt); ?></p>
 			<?php } ?>
-			<iframe class="wm_iframe_map" src="<?= esc_url($iframeUrl); ?>" loading="lazy"></iframe>
+			<!-- Iframe per desktop -->
+			<iframe class="wm_iframe_map wm_iframe_desktop" src="<?= esc_url("https://60.app.geohub.webmapp.it/#/map?track=" . $track_id); ?>" loading="lazy"></iframe>
+
+			<!-- Iframe per mobile -->
+			<iframe class="wm_iframe_map wm_iframe_mobile" src="<?= esc_url("https://60.mobile.webmapp.it/map?track=" . $track_id); ?>" loading="lazy"></iframe>
 
 			<?php if ($description) { ?>
 				<div class="wm_body_description">

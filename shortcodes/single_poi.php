@@ -31,8 +31,6 @@ function wm_single_poi($atts)
 
 	$poi_properties = $poi['properties'];
 	// $iframeUrl = "https://geohub.webmapp.it/poi/simple/" . $poi_id;
-	$iframeUrl = wp_is_mobile() ? "https://60.mobile.webmapp.it/map?poi=" . $poi_id : "https://60.app.geohub.webmapp.it/#/map?poi=" . $poi_id;
-
 
 	$title = null;
 	$description = null;
@@ -67,7 +65,11 @@ function wm_single_poi($atts)
 			<?php if ($excerpt) { ?>
 				<p class="wm_excerpt"><?php echo wp_kses_post($excerpt); ?></p>
 			<?php } ?>
-			<iframe class="wm_iframe_map" src="<?= esc_url($iframeUrl); ?>" loading="lazy"></iframe>
+			<!-- Iframe per desktop -->
+			<iframe class="wm_iframe_map wm_iframe_desktop" src="<?= esc_url("https://60.app.geohub.webmapp.it/#/map?poi=" . $poi_id); ?>" loading="lazy"></iframe>
+
+			<!-- Iframe per mobile -->
+			<iframe class="wm_iframe_map wm_iframe_mobile" src="<?= esc_url("https://60.mobile.webmapp.it/map?poi=" . $poi_id); ?>" loading="lazy"></iframe>
 		</div>
 
 		<?php if ($description) { ?>

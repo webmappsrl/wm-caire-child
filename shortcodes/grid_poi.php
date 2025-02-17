@@ -38,9 +38,15 @@ function wm_grid_poi($atts)
                 }
             }
         }
+
+        usort($poi_data, function ($a, $b) use ($language) {
+            return compare_pois($a['name'][$language] ?? '', $b['name'][$language] ?? '');
+        });
+
         if ('true' === $random) {
             shuffle($poi_data);
         }
+
         if ($quantity > 0 && count($poi_data) > $quantity) {
             $poi_data = array_slice($poi_data, 0, $quantity);
         }
@@ -83,3 +89,19 @@ function wm_grid_poi($atts)
         return;
     }
 }
+
+function compare_pois($a, $b)
+{
+    preg_match('/\d+/', $a, $matchesA);
+    preg_match('/\d+/', $b, $matchesB);
+
+    $numA = isset($matchesA[0]) ? (int)$matchesA[0] : 0;
+    $numB = isset($matchesB[0]) ? (int)$matchesB[0] : 0;
+
+    if ($numA !== $numB) {
+        return $numA - $numB;
+    }
+
+    return strcmp($a, $b);
+}
+?>

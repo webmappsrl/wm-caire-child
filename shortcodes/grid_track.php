@@ -24,7 +24,7 @@ function wm_grid_track($atts)
     foreach ($layer_ids_array as $id) {
         if (empty($id)) continue;
         $app_id = get_option('app_configuration_id');
-        $layer_url = "https://geohub.webmapp.it/api/app/webapp/$app_id/layer/{$id}";
+        $layer_url = "https://geohub.webmapp.it/api/app/webapp/{$app_id}/layer/{$id}";
         $response = wp_remote_get($layer_url);
 
         if (is_wp_error($response)) continue;
@@ -40,9 +40,14 @@ function wm_grid_track($atts)
         }
     }
 
+    usort($tracks, function ($a, $b) use ($language) {
+        return compare_tracks($a['name'][$language] ?? '', $b['name'][$language] ?? '');
+    });
+
     if ('true' === $random) {
         shuffle($tracks);
     }
+
     if ($quantity > 0 && count($tracks) > $quantity) {
         $tracks = array_slice($tracks, 0, $quantity);
     }
@@ -79,3 +84,19 @@ function wm_grid_track($atts)
 <?php
     return ob_get_clean();
 }
+
+function compare_tracks($a, $b)
+{
+    preg_match('/\d+/', $a, $matchesA);
+    preg_match('/\d+/', $b, $matchesB);
+
+    $numA = isset($matchesA[0]) ? (int)$matchesA[0] : 0;
+    $numB = isset($matchesB[0]) ? (int)$matchesB[0] : 0;
+
+    if ($numA !== $numB) {
+        return $numA - $numB;
+    }
+
+    return strcmp($a, $b);
+}
+?>
